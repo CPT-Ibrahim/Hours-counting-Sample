@@ -18,61 +18,54 @@ timers = {}
 employee_names = ["Ahmad", "Ibraheem", "Hamza", "Zein", "Mohammad", "Suha", "Tasnem", "Saeb"] 
 
 def main():
-    # Create a hidden root window
+  
     root = tk.Tk()
     root.withdraw()
-    
-    # Show a message box
-    messagebox.showinfo("Notification", "This app is a sample version to show how the app works, in order to run all the functions, you must download Samurta PDF, and set its path to C:\SumatraPDF\SumatraPDF.exe , the app will automatically create JSON files in order to save records, for full modified version contact +972536660641 ")
-    
-    # You can destroy the root window after showing the message
+    messagebox.showinfo("Notification", "This app is a sample version to show how the app works, in order to run all the functions, you must download Sumatra PDF, and set its path to C:\SumatraPDF\SumatraPDF.exe , the app will automatically create JSON files in order to save records, for full modified version contact +972536660641 ")
     root.destroy()
-
 if __name__ == "__main__":
     main()
 
-# Determine the path for the data file
+
 def get_data_file_path():
     if getattr(sys, 'frozen', False):
-        # Running in a PyInstaller frozen environment
         return os.path.join(os.path.expanduser("~"), "employee_data.json")
     else:
-        # Running in a regular Python environment
         return os.path.join(os.path.dirname(__file__), "employee_data.json")
 
 def get_timers_file_path():
     if getattr(sys, 'frozen', False):
-        # Running in a PyInstaller frozen environment
+       
         return os.path.join(os.path.expanduser("~"), "timers.json")
     else:
-        # Running in a regular Python environment
+       
         return os.path.join(os.path.dirname(__file__), "timers.json")
 
 DATA_FILE = get_data_file_path()
 TIMERS_FILE = get_timers_file_path()
 
 def save_data():
-    print(f"Saving data to: {DATA_FILE}")  # Debug print
+    print(f"Saving data to: {DATA_FILE}")  
     with open(DATA_FILE, "w") as file:
         json.dump(employee_data, file)
 
 def save_timers():
-    print(f"Saving timers to: {TIMERS_FILE}")  # Debug print
+    print(f"Saving timers to: {TIMERS_FILE}")  
     with open(TIMERS_FILE, "w") as file:
         json.dump({name: time.strftime("%Y-%m-%d %H:%M:%S") if time else None for name, time in timers.items()}, file)
 
 def load_data():
     global employee_data
-    print(f"Loading data from: {DATA_FILE}")  # Debug print
+    print(f"Loading data from: {DATA_FILE}") 
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r") as file:
             employee_data = json.load(file)
     else:
-        print(f"File not found: {DATA_FILE}")  # Debug print
+        print(f"File not found: {DATA_FILE}") 
 
 def load_timers():
     global timers
-    print(f"Loading timers from: {TIMERS_FILE}")  # Debug print
+    print(f"Loading timers from: {TIMERS_FILE}")  
     if os.path.exists(TIMERS_FILE):
         with open(TIMERS_FILE, "r") as file:
             timers_data = json.load(file)
