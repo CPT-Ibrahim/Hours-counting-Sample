@@ -1,0 +1,42 @@
+====================================================
+ Employee Time Tracker - Requirements
+====================================================
+
+── Python ───────────────────────────────────────────
+Python 3.8 or newer
+Download: https://www.python.org/downloads/
+
+── Python Library to Install ────────────────────────
+Only ONE library needs to be installed manually.
+Run this command in your terminal:
+
+    pip install reportlab
+
+── Python Libraries Already Built-in ────────────────
+These come with Python automatically, no install needed:
+
+  - tkinter      (the app window and all UI elements)
+  - datetime     (tracking clock-in and clock-out times)
+  - collections  (the defaultdict used for employee data)
+  - json         (saving and loading records to .json files)
+  - os           (finding file paths on the computer)
+  - sys          (detecting if the app is frozen into a .exe)
+  - subprocess   (telling SumatraPDF to print)
+  - io           (building the PDF in memory before printing)
+
+── External Software ─────────────────────────────────
+SumatraPDF — needed only for printing receipts and reports
+Install it at exactly this path: C:\SumatraPDF\SumatraPDF.exe
+Download: https://www.sumatrapdfreader.org/download-free-pdf-viewer
+
+Without SumatraPDF the app still runs normally,
+but the print buttons will show an error.
+
+── Data Files (auto-created, no action needed) ───────
+The app will automatically create these two files
+the first time it runs:
+
+  - employee_data.json   (stores all work session records)
+  - timers.json          (stores who is currently clocked in)
+
+====================================================
